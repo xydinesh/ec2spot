@@ -1,4 +1,4 @@
-from axis2c import Axis2CTestUbuntu
+from ec2spot.axis2c import Axis2CTestUbuntu
 from fabric.api import *
 import sys
 import logging as logger
