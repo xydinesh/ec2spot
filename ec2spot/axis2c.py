@@ -14,6 +14,7 @@ class Axis2CTestInstance(SpotInstanceRequest):
 
     def spot_request(self):
         self.config_script()
+        logger.debug(self.script)
         self.spot = self.conn.request_spot_instances(self.price,
                                                      image_id=self.image,
                                                      availability_zone_group=self.region,
@@ -28,7 +29,7 @@ set -e -x
 echo "From: dinesh@apache.org" >> /tmp/mail.tmp
 echo "To: xydinesh@gmail.com" >> /tmp/mail.tmp
 
-%s update
+# %s update
 %s install -y %s &> /tmp/apt.log
 cat /tmp/mail.tmp > /tmp/sendmail.txt
 echo "Subject: apt log" >> /tmp/sendmail.txt
@@ -77,17 +78,10 @@ class Axis2CTestUbuntu(Axis2CTestInstance):
 class Axis2CTestFedora(Axis2CTestInstance):
     def __init__(self):
         self.image = "ami-84db39ed"
+        # amazon image x64
+        self.image = "ami-1624987f" 
         self.packages = ["gcc", "gcc-c++", "subversion",  "apr", "apr-devel", "apr-util", "httpd", "httpd-devel",
                          "emacs", "autoconf", "automake", "libxml2", "libtool", "libxml2-devel", "zlib", "zlib-devel",
                          "sendmail", "make"]
         self.install_cmd = "yum"
         super(Axis2CTestFedora, self).__init__()
-
-
-
-
-
-
-
-
-
