@@ -1,0 +1,15 @@
+from distutils.core import setup
+
+setup (
+name='EC2Spot',
+version='0.1.0',
+author='Dinesh P. Weerapurage',
+packages=['ec2spot'],
+scripts=['bin/axis2c.py', 'bin/fabfile.py'],
+url='http://pypi.python.org/pypi/EC2Spot',
+license='LICENSE.txt',
+long_description=open('README.txt').read(),
+install_requires=[
+"boto >= 2.6.0",
+],
+)
