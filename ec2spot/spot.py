@@ -109,4 +109,19 @@ apt-get install -y emacs
             instance = reservation.instances[0]
             instance.terminate()
 
+    """
+    Get request status and instance status
+    """
+    def get_status(self):
+        self.status()
+        self.reservations()
+
+    """
+    Cancel both request and instance
+    """
+    def stop(self):
+        self.stop_instance()
+        time.sleep(5)
+        self.cancel()
+
 
