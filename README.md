@@ -15,3 +15,6 @@ Stop an instance
 
 Status of instances
 ===================
+
+
+[https://api.travis-ci.org/xydinesh/ec2spot.png](https://api.travis-ci.org/xydinesh/ec2spot)
