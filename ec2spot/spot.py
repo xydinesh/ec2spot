@@ -123,5 +123,3 @@ apt-get install -y emacs
         self.stop_instance()
         time.sleep(5)
         self.cancel()
-
-

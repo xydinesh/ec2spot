@@ -1,5 +1,7 @@
 from ec2spot.spot import SpotInstanceRequest
 import logging as logger
+import time
+
 
 class Axis2CTestInstance(SpotInstanceRequest):
     def __init__(self):
@@ -14,14 +16,12 @@ class Axis2CTestInstance(SpotInstanceRequest):
 
     def spot_request(self):
         self.config_script()
-        logger.debug(self.script)
-        self.spot = self.conn.request_spot_instances(self.price,
-                                                     image_id=self.image,
-                                                     availability_zone_group=self.region,
-                                                     key_name=self.key,
-                                                     instance_type=self.instance,
-                                                     user_data=self.script)
-
+        self.conn.request_spot_instances(self.price,
+                                         image_id=self.image,
+                                         availability_zone_group=self.region,
+                                         key_name=self.key,
+                                         instance_type=self.instance,
+                                         user_data=self.script)
 
     def  config_script(self):
         self.script = """#!/bin/bash
@@ -75,11 +75,10 @@ class Axis2CTestUbuntu(Axis2CTestInstance):
         super(Axis2CTestUbuntu, self).__init__()
 
 
-class Axis2CTestFedora(Axis2CTestInstance):
+class Axis2CTestAmazon(Axis2CTestInstance):
     def __init__(self):
-        self.image = "ami-84db39ed"
         # amazon image x64
-        self.image = "ami-1624987f" 
+        self.image = "ami-1624987f"
         self.packages = ["gcc", "gcc-c++", "subversion",  "apr", "apr-devel", "apr-util", "httpd", "httpd-devel",
                          "emacs", "autoconf", "automake", "libxml2", "libtool", "libxml2-devel", "zlib", "zlib-devel",
                          "sendmail", "make"]
